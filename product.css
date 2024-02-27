@@ -1,0 +1,120 @@
+.nav-bar {
+  margin-top: 20px;
+  height: 20%vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: 30px;
+}
+.main-span {
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.span-div {
+  padding: 4px;
+  background-color: black;
+}
+.part-one {
+  padding: 0px 25px;
+}
+.shop-links {
+  text-decoration: 0;
+
+  font-size: small;
+  padding: 0px 10px;
+}
+.shop-links-special {
+  color: red;
+  text-decoration: 0;
+  font-size: small;
+  padding: 0px 10px;
+}
+.main-area {
+  margin-top: 20px;
+  display: flex;
+}
+.left-side {
+  width: 60%;
+}
+.right-side {
+  width: 40%;
+}
+.side-img {
+  height: 60px;
+  width: 60px;
+}
+.corner-img {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  width: fit-content;
+  position: absolute;
+  top: 11%;
+}
+.one-img {
+  width: 790px;
+  height: 550px;
+}
+.right-side h1 {
+  font-family: sans-serif;
+  font-size: x-large;
+}
+.reviwes-div {
+  display: flex;
+  flex-direction: row;
+}
+.reviwes-div p {
+  margin-left: 10px;
+  margin-top: -1px;
+}
+.colors-div {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+.black-color {
+  background-color: black;
+}
+.green-color {
+  background-color: green;
+}
+.gray-color {
+  background-color: gray;
+}
+.blue-color {
+  background-color: blue;
+}
+.button-div {
+  border: 1px solid black;
+  width: 200px;
+
+  margin-top: 10px;
+  padding: 5px 2px;
+}
+.button-one {
+  border: 0;
+  padding: 2px 2px;
+  background-color: black;
+  color: white;
+  font-size: medium;
+  letter-spacing: 2px;
+  padding: 3px 3px;
+}
+.button-two {
+  border: 0;
+  padding: 2px 2px;
+  margin-left: 5px;
+  background-color: white;
+  font-size: medium;
+  letter-spacing: px;
+  padding: 3px 3px;
+}
