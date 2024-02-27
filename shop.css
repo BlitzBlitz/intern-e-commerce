@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  text-align: center;
+}
+.shop-area {
+  border: 2pxsolid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile {
+  height: 300px;
+  width: 200px;
+}
+
+.product {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+}
+.product-img {
+  width: 100%;
+}
+.name {
+  font-size: large;
+  font-weight: 200;
+}
+.price {
+  padding-top: 8px;
+  padding-bottom: 5px;
+  font-size: smaller;
+  font-weight: 800;
+}
+.colors {
+  font-size: small;
+}
+.button {
+  border: 0;
+  background-color: transparent;
+  font-size: x-large;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.nav-bar {
+  margin-top: 20px;
+  height: 20%vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: 30px;
+}
+.main-span {
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.span-div {
+  padding: 4px;
+  background-color: black;
+}
+.part-one {
+  padding: 0px 25px;
+}
+.shop-links {
+  text-decoration: 0;
+
+  font-size: small;
+  padding: 0px 10px;
+}
+.shop-links-special {
+  color: red;
+  text-decoration: 0;
+  font-size: small;
+  padding: 0px 10px;
+}
+.part-two {
+  padding: 0px 25px;
+}
+.second-part {
+  padding: 8em 0em;
+}
+.second-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.shop-h {
+  font-size: 4em;
+  font-weight: 400;
+}
+.shop-p {
+  width: 800px;
+}
+.filters {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  margin-left: -520px;
+}
+.filter {
+  position: relative;
+}
+.options {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+}
+.options span {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+.dropdown {
+  border: 0;
+  font-size: medium;
+  background: transparent;
+}
+.one {
+  margin-right: 8px;
+}
+.products-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
