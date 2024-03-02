@@ -1,14 +1,18 @@
 //marrim id nga URL
-let urlString = window.location.href;
-let paramString = urlString.split("?")[1]; //'localhost://product.html?productId=P1&time=10&lang=EN'.split('?') = ['localhost://product.html', 'productId=P1&time=10&lang=EN' ]
-let params_arr = paramString.split("&"); //'productId=P1&time=10&lang=EN'.split('&') = ['productId=P1',  'time=10', 'lang=EN']
-let productId;
-for (let i = 0; i < params_arr.length; i++) {
-  let pair = params_arr[i].split("="); //['productId=P1',  'time=10', 'lang=EN'] => 'productId=P1'.split('=') -> ['productId', 'P1']
-  console.log("Key is:", pair[0]);
-  console.log("Value is:", pair[1]);
-  productId = pair[1];
-}
+
+let urlString = window.location.search;
+let urlParams = new URLSearchParams(urlString);
+const productId = urlParams.get("productId");
+
+// let paramString = urlString.split("?")[1]; //'localhost://product.html?productId=P1&time=10&lang=EN'.split('?') = ['localhost://product.html', 'productId=P1&time=10&lang=EN' ]
+// let params_arr = paramString.split("&"); //'productId=P1&time=10&lang=EN'.split('&') = ['productId=P1',  'time=10', 'lang=EN']
+// let productId;
+// for (let i = 0; i < params_arr.length; i++) {
+//   let pair = params_arr[i].split("="); //['productId=P1',  'time=10', 'lang=EN'] => 'productId=P1'.split('=') -> ['productId', 'P1']
+//   console.log("Key is:", pair[0]);
+//   console.log("Value is:", pair[1]);
+//   productId = pair[1];
+// }
 
 let productStateArray = JSON.parse(localStorage.getItem("productsList"));
 if (productStateArray == undefined) {
