@@ -1,0 +1,103 @@
+{
+  "products": [
+    {
+      "id": "P1",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Carry-On",
+      "price": "275",
+      "colors": ["red", "olive", "black", "gold", "pink"],
+      " stockAmount": 5,
+      " category": "carry-on",
+      " material": "plastic"
+    },
+    {
+      "id": "P2",
+      "img": ["img/p2/1.webp", "img/p2/2.webp", "img/p2/3.webp"],
+      "name": "Carry-On Flex",
+      "price": "325",
+      "colors": ["black", "gold", "pink"],
+      " stockAmount": 20,
+      " category": "carry-on",
+      " material": "plastic"
+    },
+    {
+      "id": "P3",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Carry-On: Aluminum Edition",
+      "price": "625",
+      "colors": ["red", "gold", "pink"],
+      " stockAmount": 25,
+      " category": "carry-on",
+      " material": "aluminum"
+    },
+    {
+      "id": "P4",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Bigger Carry-On Flex",
+      "price": "345",
+      "colors": ["olive", "black", "gold", "pink"],
+      " stockAmount": 1,
+      " category": "big-carry-on",
+      " material": "plastic"
+    },
+    {
+      "id": "P5",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Bigger Carry-On: Aluminum Edition",
+      "price": "645",
+      "colors": ["red", "olive", "gold", "pink"],
+      " stockAmount": 20,
+      " category": "big-carry-on",
+      " material": "aluminum"
+    },
+    {
+      "id": "P6",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Medium",
+      "price": "345",
+      "colors": ["red", "black", "gold", "pink"],
+      " stockAmount": 5,
+      " category": "medium",
+      " material": "plastic"
+    }
+  ],
+  "users": [
+    { "username": "JohnDoe", "password": "john123" },
+    { "username": "JaneSmith", "password": "smith987" }
+  ]
+}

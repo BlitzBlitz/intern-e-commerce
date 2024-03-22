@@ -1,30 +1,44 @@
 //marrim id nga URL
+let urlString = window.location.href;
+let paramString = urlString.split("?")[1]; //'localhost://product.html?productId=P1&time=10&lang=EN'.split('?') = ['localhost://product.html', 'productId=P1&time=10&lang=EN' ]
+let params_arr = paramString.split("&"); //'productId=P1&time=10&lang=EN'.split('&') = ['productId=P1',  'time=10', 'lang=EN']
+let productId;
+for (let i = 0; i < params_arr.length; i++) {
+  let pair = params_arr[i].split("="); //['productId=P1',  'time=10', 'lang=EN'] => 'productId=P1'.split('=') -> ['productId', 'P1']
 
-let urlString = window.location.search;
-let urlParams = new URLSearchParams(urlString);
-const productId = urlParams.get("productId");
+  productId = pair[1];
+}
 
-// let paramString = urlString.split("?")[1]; //'localhost://product.html?productId=P1&time=10&lang=EN'.split('?') = ['localhost://product.html', 'productId=P1&time=10&lang=EN' ]
-// let params_arr = paramString.split("&"); //'productId=P1&time=10&lang=EN'.split('&') = ['productId=P1',  'time=10', 'lang=EN']
-// let productId;
-// for (let i = 0; i < params_arr.length; i++) {
-//   let pair = params_arr[i].split("="); //['productId=P1',  'time=10', 'lang=EN'] => 'productId=P1'.split('=') -> ['productId', 'P1']
-//   console.log("Key is:", pair[0]);
-//   console.log("Value is:", pair[1]);
-//   productId = pair[1];
+// let productStateArray = JSON.parse(localStorage.getItem("productsList"));
+// if (productStateArray == undefined) {
+//   //shko te faqa 404
+//   alert("products not read from the DB");
 // }
-
-let productStateArray = JSON.parse(localStorage.getItem("productsList"));
-if (productStateArray == undefined) {
-  //shko te faqa 404
-  alert("products not read from the DB");
-}
-for (let index = 0; index < productStateArray.length; index++) {
-  const product = productStateArray[index];
-  if (productId == product.id) {
+// for (let index = 0; index < productStateArray.length; index++) {
+//   const product = productStateArray[index];
+//   if (productId == product.id) {
+//     displayProduct(product);
+//   }
+// }
+let product;
+console.log(productId);
+fetch(`http://localhost:3000/products/${productId}`)
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    product = data;
     displayProduct(product);
-  }
+  })
+  .catch((err) => {
+    console.log(err);
+    // setTimeout(goToNotFound, 2000);
+  });
+
+function goToNotFound() {
+  window.location = "notfound.html";
 }
+
 // funksioni disply product merr si rgument nje produkt
 //1 selektojme elementet html dhe i ndryshojme the dhent e produktit we mrrim si rgument
 // 2 fusht e produktit t cilt jne vektor psh img,colors
@@ -33,7 +47,6 @@ for (let index = 0; index < productStateArray.length; index++) {
 //        let color div = document.crete element("div")
 //       div.clss list.dd ( product.colors[i])
 function displayProduct(product) {
-  console.log(productStateArray);
   let mainImgElement = document.querySelector(".one-img");
   mainImgElement.src = product.img[0];
   let sideImgContainerElement = document.querySelector(".corner-img");

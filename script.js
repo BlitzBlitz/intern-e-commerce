@@ -104,6 +104,7 @@ if (productStateArray == undefined) {
       material: "plastic",
     },
   ];
+
   localStorage.setItem("productsList", JSON.stringify(productStateArray)); //convert Array to string
 }
 
