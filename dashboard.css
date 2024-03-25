@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.left-part {
+  border: 2px solid black;
+
+  width: 400px;
+  background-color: rgb(45, 43, 43);
+}
+.main-div {
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
+
+  height: 100vh;
+}
+
+.top-div {
+  border: 2px solid pink;
+  margin-top: 40px;
+}
+.middle-d {
+  border: 2px solid gold;
+  height: 550px;
+  margin-top: 60px;
+}
+.tab-links {
+  border: 2px solid red;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.same-a {
+  text-decoration: none;
+  color: gray;
+}
+.logo-div {
+  margin-top: 280px;
+  color: white;
+  font-size: xx-large;
+}
+.middle-part {
+  background-color: rgb(45, 43, 43);
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+.last-product {
+  width: 40em;
+  display: flex;
+  background-color: white;
+  border: 2px solid purple;
+}
+.right-part {
+  background-color: rgb(45, 43, 43);
+}
+.h-name {
+  font-size: x-large;
+  font-weight: 100;
+  margin-left: 20px;
+}
+.one-p {
+  margin-top: 20px;
+  margin-left: -10em;
+}
+.only-p {
+  color: rgb(43, 43, 226);
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 25px;
+}
+.button-div {
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px;
+  margin-top: 2px;
+}
+.price {
+  border: 2px solid green;
+  margin-left: 15em;
+}
