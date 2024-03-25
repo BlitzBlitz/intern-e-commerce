@@ -1,4 +1,6 @@
 let shopArea = document.querySelector(".products-area");
+const productsURL = "http://localhost:3000/products";
+
 function showProducts(productsList) {
   shopArea.innerHTML = ""; //fshine produketet qe jane shfaqur ne ekran
   for (let index = 0; index < productsList.length; index++) {
@@ -7,115 +9,23 @@ function showProducts(productsList) {
   }
 }
 
-let productStateArray = JSON.parse(localStorage.getItem("productsList")); //string -> Array
-if (productStateArray == undefined) {
-  productStateArray = [
-    {
-      id: "P1",
-      img: [
-        "img/p1/1.webp",
-        "img/p1/b1.jpg",
-        "img/p1/b2.jpg",
-        "img/p1/h1.png",
-        "img/p1/h2.png",
-        "img/p1/h3.png",
-      ],
-      name: "Carry-On",
-      price: "275",
-      colors: ["green", "gray", "blue", "black"],
-      stockAmount: 5,
-      category: "carry-on",
-      material: "plastic",
-    },
-    {
-      id: "P2",
-      img: [
-        "img/p2/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Carry-On Flex",
-      price: "325",
-      colors: ["black", "gold", "pink"],
-      stockAmount: 20,
-      category: "carry-on",
-      material: "plastic",
-    },
-    {
-      id: "P3",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Carry-On: Aluminum Edition",
-      price: "625",
-      colors: ["red", "gold", "pink"],
-      stockAmount: 25,
-      category: "carry-on",
-      material: "aluminum",
-    },
-    {
-      id: "P4",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Bigger Carry-On Flex",
-      price: "345",
-      colors: ["olive", "black", "gold", "pink"],
-      stockAmount: 1,
-      category: "big-carry-on",
-      material: "plastic",
-    },
-    {
-      id: "P5",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Bigger Carry-On: Aluminum Edition",
-      price: "645",
-      colors: ["red", "olive", "gold", "pink"],
-      stockAmount: 20,
-      category: "big-carry-on",
-      material: "aluminum",
-    },
-    {
-      id: "P6",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Medium",
-      price: "345",
-      colors: ["red", "black", "gold", "pink"],
-      stockAmount: 5,
-      category: "medium",
-      material: "plastic",
-    },
-  ];
-  localStorage.setItem("productsList", JSON.stringify(productStateArray)); //convert Array to string
+let productStateArray = [];
+function readProductsFromDB() {
+  fetch(productsURL)
+    .then((res) => res.json())
+    .then((products) => {
+      productStateArray = products;
+      showProducts(productStateArray);
+    })
+    .catch((error) => showError(error));
 }
-showProducts(productStateArray);
+readProductsFromDB();
+function showError(error) {
+  console.log(error);
+}
+function showMessage(message) {
+  console.log(message);
+}
 function displayProduct(product) {
   let productLink = document.createElement("a");
   productLink.href = ` product.html?productId=${product.id} `; //query param
