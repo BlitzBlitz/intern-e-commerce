@@ -39,31 +39,8 @@ function displayProduct(product) {
     `;
   shopArea.append(productLink);
 }
-// let firstDivElement = document.querySelector(".first-product")
-// let anotherElement = []
-// for (let index = 0; index < 3; index++) {
-//   const element = productStateArray[index];
 
-//     anotherElement.push(element)
-//     console.log(anotherElement);
-
-// }
-
-let dropdownButtonsList = document.querySelectorAll(".dropdown");
-let dropdownsContainerList = document.querySelectorAll(".options");
-
-for (let index = 0; index < dropdownButtonsList.length; index++) {
-  const dropdownElement = dropdownButtonsList[index];
-  dropdownElement.addEventListener("click", toggleDropdown);
-}
-for (let index = 0; index < dropdownsContainerList.length; index++) {
-  const dropdownContainer = dropdownsContainerList[index];
-  dropdownContainer.addEventListener("click", showFilteredResult);
-}
-if (dropdownButtonsList) {
-}
-
-function showFilteredResult(event) {
+function showFilteredResultForCategory(event) {
   let selectInput = event.target;
   let categoryId = +selectInput.value;
   console.log(categoryId);
@@ -114,7 +91,7 @@ function search(keyword) {
 //Add category options
 function addCategoriesOptions(categories) {
   let categorySelectInput = document.querySelector('#category-filter');
-  categorySelectInput.addEventListener('click', showFilteredResult);
+  categorySelectInput.addEventListener('click', showFilteredResultForCategory);
   for (let index = 0; index < categories.length; index++) {
     const category = categories[index];
     let optionElement = document.createElement('option');
