@@ -72,3 +72,20 @@ function readProductsFromDB() {
 }
 
 readProductsFromDB();
+fetch("http://localhost:3000/products/P6")
+  .then((res) => {
+    console.log(res);
+    return res.json();
+  })
+  .then((data) => printData(data))
+  .catch((err) => console.log(err));
+
+// let newProduct = {
+//   img: "img/2.webp",
+//   name: "Test2",
+//   price: "1000",
+//   colors: ["black", "gold", "pink"],
+//   stockAmount: 120,
+//   category: "test",
+//   material: "plastic",
+// };
