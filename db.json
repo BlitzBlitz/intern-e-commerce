@@ -12,20 +12,20 @@
       ],
       "name": "Carry-On",
       "price": "275",
-      "colors": ["red", "olive", "black", "gold", "pink"],
-      " stockAmount": 5,
-      " category": "carry-on",
-      " material": "plastic"
+      "color": [2],
+      "stockAmount": 5,
+      "category": 1,
+      "material": "plastic"
     },
     {
       "id": "P2",
       "img": ["img/p2/1.webp", "img/p2/2.webp", "img/p2/3.webp"],
       "name": "Carry-On Flex",
       "price": "325",
-      "colors": ["black", "gold", "pink"],
-      " stockAmount": 20,
-      " category": "carry-on",
-      " material": "plastic"
+      "color": [1,2,3],
+      "stockAmount": 20,
+      "category": 1,
+      "material": "plastic"
     },
     {
       "id": "P3",
@@ -39,10 +39,10 @@
       ],
       "name": "Carry-On: Aluminum Edition",
       "price": "625",
-      "colors": ["red", "gold", "pink"],
-      " stockAmount": 25,
-      " category": "carry-on",
-      " material": "aluminum"
+      "color": [1,3],
+      "stockAmount": 25,
+      "category": 1,
+      "material": "aluminum"
     },
     {
       "id": "P4",
@@ -56,10 +56,10 @@
       ],
       "name": "Bigger Carry-On Flex",
       "price": "345",
-      "colors": ["olive", "black", "gold", "pink"],
-      " stockAmount": 1,
-      " category": "big-carry-on",
-      " material": "plastic"
+      "color": [1,2],
+      "stockAmount": 1,
+      "category": 3,
+      "material": "plastic"
     },
     {
       "id": "P5",
@@ -73,10 +73,10 @@
       ],
       "name": "Bigger Carry-On: Aluminum Edition",
       "price": "645",
-      "colors": ["red", "olive", "gold", "pink"],
-      " stockAmount": 20,
-      " category": "big-carry-on",
-      " material": "aluminum"
+      "color": [2,3],
+      "stockAmount": 20,
+      "category": 2,
+      "material": "aluminum"
     },
     {
       "id": "P6",
@@ -90,14 +90,56 @@
       ],
       "name": "Medium",
       "price": "345",
-      "colors": ["red", "black", "gold", "pink"],
-      " stockAmount": 5,
-      " category": "medium",
-      " material": "plastic"
+      "color": [1,3],
+      "stockAmount": 5,
+      "category": 2,
+      "material": "plastic"
     }
   ],
   "users": [
     { "username": "JohnDoe", "password": "john123" },
     { "username": "JaneSmith", "password": "smith987" }
+  ],
+  "category":[
+    {
+      "id": 1,
+      "name": "bag"
+    },
+    {
+      "id": 2,
+      "name": "luggage"
+    },
+    {
+      "id": 3,
+      "name": "small bag"
+    }
+  ],
+  "material":[
+    {
+      "id": 1,
+      "title":"plastic"
+    },
+    {
+      "id": 2,
+      "title":"metal"
+    },
+    {
+      "id": 3,
+      "title":"aluminuim"
+    }
+  ],
+  "color":[
+    {
+      "id": 1,
+      "title":"green"
+    },
+    {
+      "id": 2,
+      "title":"black"
+    },
+    {
+      "id": 3,
+      "title":"white"
+    }
   ]
 }
