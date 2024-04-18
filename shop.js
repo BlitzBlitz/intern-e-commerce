@@ -1,9 +1,24 @@
+//Cart
+let cart = JSON.parse(localStorage.getItem("cart"));
+if (cart == undefined) {
+  localStorage.setItem("cart", JSON.stringify([]));
+}
+
 let shopArea = document.querySelector(".products-area");
 const productsURL = "http://localhost:3000/products";
 const categoryURL = "http://localhost:3000/category";
 const materialURL = "http://localhost:3000/material";
+const colorURL = "http://localhost:3000/color";
+
+function makeUpperCase(string) {
+  let lettersArray = string.split("");
+  lettersArray[0] = lettersArray[0].toUpperCase();
+  string = lettersArray.join("");
+  return string;
+}
 
 function showProducts(productsList) {
+  console.log(productsList);
   shopArea.innerHTML = ""; //fshine produketet qe jane shfaqur ne ekran
   for (let index = 0; index < productsList.length; index++) {
     const product = productsList[index];
@@ -44,7 +59,6 @@ function displayProduct(product) {
 function showFilteredResultForCategory(event) {
   let selectInput = event.target;
   let categoryId = +selectInput.value;
-  console.log(categoryId);
   if (categoryId == -1) {
     readProductsFromDB("");
   } else {
@@ -91,7 +105,7 @@ function search(keyword) {
 //Add category options
 function addCategoriesOptions(categories) {
   let categorySelectInput = document.querySelector("#category-filter");
-  categorySelectInput.addEventListener("click", showFilteredResultForCategory);
+  categorySelectInput.addEventListener("change", showFilteredResultForCategory);
   for (let index = 0; index < categories.length; index++) {
     const category = categories[index];
     let optionElement = document.createElement("option");
@@ -106,13 +120,6 @@ fetch(categoryURL)
   .then((categories) => addCategoriesOptions(categories))
   .catch((error) => console.log(error));
 
-function makeUpperCase(string) {
-  let lettersArray = string.split("");
-  lettersArray[0] = lettersArray[0].toUpperCase();
-  string = lettersArray.join("");
-  return string;
-}
-
 function showFilteredResultForMaterial(event) {
   let selectInput = event.target;
   let materialId = +selectInput.value;
@@ -126,7 +133,7 @@ function showFilteredResultForMaterial(event) {
 
 function addMaterialsOptions(materialsList) {
   let materialSelectInput = document.querySelector("#material-filter");
-  materialSelectInput.addEventListener("click", showFilteredResultForMaterial);
+  materialSelectInput.addEventListener("change", showFilteredResultForMaterial);
   for (let index = 0; index < materialsList.length; index++) {
     const material = materialsList[index];
     let optionElement = document.createElement("option");
@@ -139,4 +146,48 @@ function addMaterialsOptions(materialsList) {
 fetch(materialURL)
   .then((res) => res.json())
   .then((material) => addMaterialsOptions(material))
+  .catch((error) => console.log(error));
+
+function showFilteredResultForColor(event) {
+  let selectInput = event.target;
+  let colorId = +selectInput.value;
+  if (colorId == -1) {
+    readProductsFromDB("");
+  } else {
+    fetch(productsURL)
+      .then((res) => res.json())
+      .then((products) => {
+        const filteredProductsByColor = [];
+        for (let index = 0; index < products.length; index++) {
+          const product = products[index];
+          for (let j = 0; j < product.color.length; j++) {
+            const color = product.color[j];
+            if (color == colorId) {
+              filteredProductsByColor.push(product);
+              break;
+            }
+          }
+        }
+        console.log(filteredProductsByColor);
+        showProducts(filteredProductsByColor);
+      })
+      .catch((error) => console.log(error));
+  }
+}
+
+function addColorsOptions(colorList) {
+  let colorSelectInput = document.querySelector("#color-filter");
+  colorSelectInput.addEventListener("change", showFilteredResultForColor);
+  for (let index = 0; index < colorList.length; index++) {
+    const color = colorList[index];
+    let optionElement = document.createElement("option");
+    optionElement.innerText = makeUpperCase(color.name);
+    optionElement.value = color.id;
+    colorSelectInput.appendChild(optionElement);
+  }
+}
+
+fetch(colorURL)
+  .then((res) => res.json())
+  .then((colors) => addColorsOptions(colors))
   .catch((error) => console.log(error));

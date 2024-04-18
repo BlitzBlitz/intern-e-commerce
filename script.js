@@ -108,6 +108,11 @@ if (productStateArray == undefined) {
   localStorage.setItem("productsList", JSON.stringify(productStateArray)); //convert Array to string
 }
 
+//Cart
+let cart = JSON.parse(localStorage.getItem("cart"));
+if (cart == undefined) {
+  localStorage.setItem("cart", JSON.stringify([]));
+}
 //show search names
 //in    Event target:   input Element
 //      Event Type:     keyup

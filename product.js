@@ -21,7 +21,6 @@ for (let i = 0; i < params_arr.length; i++) {
 //   }
 // }
 let product;
-console.log(productId);
 fetch(`http://localhost:3000/products/${productId}`)
   .then((res) => {
     return res.json();
@@ -67,16 +66,16 @@ function displayProduct(product) {
     reviwesDivElement.append(iconElement);
   }
   let colorsDivElement = document.querySelector(".colors-div");
-  for (let index = 0; index < product.colors.length; index++) {
-    const color = product.colors[index];
-    let colorDiv = document.createElement("div");
+  // for (let index = 0; index < product.colors.length; index++) {
+  //   const color = product.colors[index];
+  //   let colorDiv = document.createElement("div");
 
-    colorDiv.classList.add("color");
+  //   colorDiv.classList.add("color");
 
-    colorDiv.classList.add(`${color}-color`);
+  //   colorDiv.classList.add(`${color}-color`);
 
-    colorsDivElement.append(colorDiv);
-  }
+  //   colorsDivElement.append(colorDiv);
+  // }
 }
 
 //display product photo on-click
@@ -98,4 +97,22 @@ function showImg(event) {
   let imgUrl = clickedImg.src;
   let mainImgElement = document.querySelector(".one-img");
   mainImgElement.src = imgUrl;
+}
+
+//Cart
+let cart = JSON.parse(localStorage.getItem("cart"));
+if (cart == undefined) {
+  localStorage.setItem("cart", JSON.stringify([]));
+}
+
+let addToCartBtnElement = document.querySelector("#add-to-cart");
+addToCartBtnElement.addEventListener("click", addToCart);
+function addToCart() {
+  console.log(cart);
+  //nese product eshte prezent
+  //product.amount +=1  (shtojme nje fushe te re tek objekti)
+  //nese nuk eshte prezent
+  //product.amount = 1  (shtojme nje fushe te re tek objekti)
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
