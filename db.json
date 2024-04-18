@@ -15,17 +15,17 @@
       "color": [2],
       "stockAmount": 5,
       "category": 1,
-      "material": "plastic"
+      "material": 3
     },
     {
       "id": "P2",
       "img": ["img/p2/1.webp", "img/p2/2.webp", "img/p2/3.webp"],
       "name": "Carry-On Flex",
       "price": "325",
-      "color": [1,2,3],
+      "color": [1, 2, 3],
       "stockAmount": 20,
       "category": 1,
-      "material": "plastic"
+      "material": 3
     },
     {
       "id": "P3",
@@ -39,10 +39,10 @@
       ],
       "name": "Carry-On: Aluminum Edition",
       "price": "625",
-      "color": [1,3],
+      "color": [1, 3],
       "stockAmount": 25,
       "category": 1,
-      "material": "aluminum"
+      "material": 1
     },
     {
       "id": "P4",
@@ -56,10 +56,10 @@
       ],
       "name": "Bigger Carry-On Flex",
       "price": "345",
-      "color": [1,2],
+      "color": [1, 2],
       "stockAmount": 1,
       "category": 3,
-      "material": "plastic"
+      "material": 1
     },
     {
       "id": "P5",
@@ -73,10 +73,10 @@
       ],
       "name": "Bigger Carry-On: Aluminum Edition",
       "price": "645",
-      "color": [2,3],
+      "color": [2, 3],
       "stockAmount": 20,
       "category": 2,
-      "material": "aluminum"
+      "material": 3
     },
     {
       "id": "P6",
@@ -90,17 +90,17 @@
       ],
       "name": "Medium",
       "price": "345",
-      "color": [1,3],
+      "color": [1, 3],
       "stockAmount": 5,
       "category": 2,
-      "material": "plastic"
+      "material": 2
     }
   ],
   "users": [
     { "username": "JohnDoe", "password": "john123" },
     { "username": "JaneSmith", "password": "smith987" }
   ],
-  "category":[
+  "category": [
     {
       "id": 1,
       "name": "bag"
@@ -114,32 +114,32 @@
       "name": "small bag"
     }
   ],
-  "material":[
+  "material": [
     {
       "id": 1,
-      "title":"plastic"
+      "name": "plastic"
     },
     {
       "id": 2,
-      "title":"metal"
+      "name": "metal"
     },
     {
       "id": 3,
-      "title":"aluminuim"
+      "name": "aluminuim"
     }
   ],
-  "color":[
+  "color": [
     {
       "id": 1,
-      "title":"green"
+      "name": "green"
     },
     {
       "id": 2,
-      "title":"black"
+      "name": "black"
     },
     {
       "id": 3,
-      "title":"white"
+      "name": "white"
     }
   ]
 }

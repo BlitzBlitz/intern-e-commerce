@@ -1,6 +1,7 @@
 let shopArea = document.querySelector(".products-area");
 const productsURL = "http://localhost:3000/products";
 const categoryURL = "http://localhost:3000/category";
+const materialURL = "http://localhost:3000/material";
 
 function showProducts(productsList) {
   shopArea.innerHTML = ""; //fshine produketet qe jane shfaqur ne ekran
@@ -12,7 +13,7 @@ function showProducts(productsList) {
 
 let productStateArray = [];
 function readProductsFromDB(filters) {
-  fetch(productsURL+filters)
+  fetch(productsURL + filters)
     .then((res) => res.json())
     .then((products) => {
       productStateArray = products;
@@ -20,7 +21,7 @@ function readProductsFromDB(filters) {
     })
     .catch((error) => showError(error));
 }
-readProductsFromDB('');
+readProductsFromDB("");
 function showError(error) {
   console.log(error);
 }
@@ -44,9 +45,9 @@ function showFilteredResultForCategory(event) {
   let selectInput = event.target;
   let categoryId = +selectInput.value;
   console.log(categoryId);
-  if(categoryId == -1){
-    readProductsFromDB('');
-  }else{
+  if (categoryId == -1) {
+    readProductsFromDB("");
+  } else {
     readProductsFromDB(`?category=${categoryId}`);
   }
 }
@@ -87,14 +88,13 @@ function search(keyword) {
   return resultArray;
 }
 
-
 //Add category options
 function addCategoriesOptions(categories) {
-  let categorySelectInput = document.querySelector('#category-filter');
-  categorySelectInput.addEventListener('click', showFilteredResultForCategory);
+  let categorySelectInput = document.querySelector("#category-filter");
+  categorySelectInput.addEventListener("click", showFilteredResultForCategory);
   for (let index = 0; index < categories.length; index++) {
     const category = categories[index];
-    let optionElement = document.createElement('option');
+    let optionElement = document.createElement("option");
     optionElement.innerText = makeUpperCase(category.name);
     optionElement.value = category.id;
     categorySelectInput.appendChild(optionElement);
@@ -102,16 +102,41 @@ function addCategoriesOptions(categories) {
 }
 
 fetch(categoryURL)
-.then(res => res.json())
-.then(categories => addCategoriesOptions(categories))
-.catch(error => console.log(error))
-
-
-
+  .then((res) => res.json())
+  .then((categories) => addCategoriesOptions(categories))
+  .catch((error) => console.log(error));
 
 function makeUpperCase(string) {
-  let lettersArray = string.split('');
+  let lettersArray = string.split("");
   lettersArray[0] = lettersArray[0].toUpperCase();
-  string = lettersArray.join('');
+  string = lettersArray.join("");
   return string;
 }
+
+function showFilteredResultForMaterial(event) {
+  let selectInput = event.target;
+  let materialId = +selectInput.value;
+  console.log(materialId);
+  if (materialId == -1) {
+    readProductsFromDB("");
+  } else {
+    readProductsFromDB(`?material=${materialId}`);
+  }
+}
+
+function addMaterialsOptions(materialsList) {
+  let materialSelectInput = document.querySelector("#material-filter");
+  materialSelectInput.addEventListener("click", showFilteredResultForMaterial);
+  for (let index = 0; index < materialsList.length; index++) {
+    const material = materialsList[index];
+    let optionElement = document.createElement("option");
+    optionElement.innerText = makeUpperCase(material.name);
+    optionElement.value = material.id;
+    materialSelectInput.appendChild(optionElement);
+  }
+}
+
+fetch(materialURL)
+  .then((res) => res.json())
+  .then((material) => addMaterialsOptions(material))
+  .catch((error) => console.log(error));
