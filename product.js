@@ -9,17 +9,6 @@ for (let i = 0; i < params_arr.length; i++) {
   productId = pair[1];
 }
 
-// let productStateArray = JSON.parse(localStorage.getItem("productsList"));
-// if (productStateArray == undefined) {
-//   //shko te faqa 404
-//   alert("products not read from the DB");
-// }
-// for (let index = 0; index < productStateArray.length; index++) {
-//   const product = productStateArray[index];
-//   if (productId == product.id) {
-//     displayProduct(product);
-//   }
-// }
 let product;
 fetch(`http://localhost:3000/products/${productId}`)
   .then((res) => {
@@ -110,9 +99,20 @@ addToCartBtnElement.addEventListener("click", addToCart);
 function addToCart() {
   console.log(cart);
   //nese product eshte prezent
-  //product.amount +=1  (shtojme nje fushe te re tek objekti)
-  //nese nuk eshte prezent
-  //product.amount = 1  (shtojme nje fushe te re tek objekti)
-  cart.push(product);
+  let isPresent = false;
+  for (let index = 0; index < cart.length; index++) {
+    const cartProduct = cart[index];
+    if (cartProduct.id == product.id) {
+      cartProduct.amount += 1;
+      isPresent = true;
+    }
+  }
+  if (!isPresent) {
+    //isPresent != true
+    let cartProduct = product;
+    cartProduct.amount = 1;
+    cart.push(cartProduct);
+  }
+
   localStorage.setItem("cart", JSON.stringify(cart));
 }
