@@ -10,22 +10,34 @@
         "img/p1/h2.png",
         "img/p1/h3.png"
       ],
-      "name": "Carry-On",
-      "price": "275",
-      "color": [2],
+      "name": "Carry-On-Edited",
+      "price": "123",
+      "color": [
+        2
+      ],
       "stockAmount": 5,
       "category": 1,
-      "material": 3
+      "material": 3,
+      "title": "Carr"
     },
     {
       "id": "P2",
-      "img": ["img/p2/1.webp", "img/p2/2.webp", "img/p2/3.webp"],
+      "img": [
+        "img/p2/1.webp",
+        "img/p2/2.webp",
+        "img/p2/3.webp"
+      ],
       "name": "Carry-On Flex",
-      "price": "325",
-      "color": [1, 2, 3],
+      "price": "32",
+      "color": [
+        1,
+        2,
+        3
+      ],
       "stockAmount": 20,
       "category": 1,
-      "material": 3
+      "material": 3,
+      "title": "Carry-On 2"
     },
     {
       "id": "P3",
@@ -39,7 +51,10 @@
       ],
       "name": "Carry-On: Aluminum Edition",
       "price": "625",
-      "color": [1, 3],
+      "color": [
+        1,
+        3
+      ],
       "stockAmount": 25,
       "category": 1,
       "material": 1
@@ -54,9 +69,12 @@
         "img/p1/h2.png",
         "img/p1/h3.png"
       ],
-      "name": "Bigger Carry-On Flex",
-      "price": "345",
-      "color": [1, 2],
+      "name": "Bigger Carry-On Flex1",
+      "price": "366",
+      "color": [
+        1,
+        2
+      ],
       "stockAmount": 1,
       "category": 3,
       "material": 1
@@ -73,7 +91,10 @@
       ],
       "name": "Bigger Carry-On: Aluminum Edition",
       "price": "645",
-      "color": [2, 3],
+      "color": [
+        2,
+        3
+      ],
       "stockAmount": 20,
       "category": 2,
       "material": 3
@@ -90,55 +111,66 @@
       ],
       "name": "Medium",
       "price": "345",
-      "color": [1, 3],
+      "color": [
+        1,
+        3
+      ],
       "stockAmount": 5,
       "category": 2,
       "material": 2
     }
   ],
   "users": [
-    { "username": "JohnDoe", "password": "john123" },
-    { "username": "JaneSmith", "password": "smith987" }
+    {
+      "username": "JohnDoe",
+      "password": "john123",
+      "id": "8986"
+    },
+    {
+      "username": "JaneSmith",
+      "password": "smith987",
+      "id": "4b96"
+    }
   ],
   "category": [
     {
-      "id": 1,
+      "id": "1",
       "name": "bag"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "luggage"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "small bag"
     }
   ],
   "material": [
     {
-      "id": 1,
+      "id": "1",
       "name": "plastic"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "metal"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "aluminuim"
     }
   ],
   "color": [
     {
-      "id": 1,
+      "id": "1",
       "name": "green"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "black"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "white"
     }
   ]
