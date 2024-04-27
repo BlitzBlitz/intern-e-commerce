@@ -28,7 +28,7 @@
   display: flex;
   width: 50%;
 }
-.last-product {
+.cart-item {
   display: flex;
   background-color: white;
   border: 2px solid purple;
@@ -79,4 +79,12 @@
 #plus-button {
   margin: 0 10px;
   user-select: none;
+}
+.right-side {
+  position: relative;
+}
+.delete-item {
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }
