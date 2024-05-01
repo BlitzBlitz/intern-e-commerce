@@ -4,7 +4,7 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 if (!cart) {
   cart = [];
 }
-
+let total = 0;
 function displayCartItem(cart) {
   let cartItemsContainerElement = document.querySelector(".cart-products");
   cartItemsContainerElement.innerHTML = "";
@@ -29,9 +29,9 @@ function displayCartItem(cart) {
           <p class="one-p">color</p>
           <p class="only-p">Personalize it</p>
           <div id="counter-button" onclick=changeAmount(event)>
-            <button id="minus-button-${cartItem.id}">-</button>
+            <button id="minus-button-${cartItem.id}" class="plus-minus">-</button>
             <span id="counter">${cartItem.amount}</span>
-            <button id="plus-button-${cartItem.id}">+</button>
+            <button id="plus-button-${cartItem.id}" class="plus-minus">+</button>
           </div>
           <h2 class="price">$${cartItem.price}</h2>
         </div>
@@ -53,6 +53,7 @@ function changeAmount(event) {
     for (let index = 0; index < cart.length; index++) {
       const cartItem = cart[index];
       if (cartItem.id == clickedElementId) {
+        console.log(cartItem.stockAmount);
         if (
           clickedElement.id.startsWith("plus-button") &&
           cartItem.amount < cartItem.stockAmount
@@ -66,6 +67,7 @@ function changeAmount(event) {
           cartItem.amount--;
         }
         newAmount = cartItem.amount;
+        calculateAndDisplayTotalPrice();
       }
     }
     //bejm update te dhenat e cart ne localStorage
@@ -103,6 +105,7 @@ function deleteItem(event) {
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   displayCartItem(cart);
+  calculateAndDisplayTotalPrice();
 }
 
 //Total
@@ -114,3 +117,25 @@ function deleteItem(event) {
 //      shto cmimin total per item tek cartTotal
 //out   selekto total element -> display total
 //      slect shipping message -> display message based on cartTotal
+
+function calculateCartTotal(cart) {
+  let cartTotal = 0;
+  for (let index = 0; index < cart.length; index++) {
+    const cartItem = cart[index];
+    let totalPriceForItem = cartItem.price * cartItem.amount;
+    cartTotal += totalPriceForItem;
+  }
+  return cartTotal;
+}
+function calculateAndDisplayTotalPrice() {
+  total = calculateCartTotal(cart);
+  const totalPriceSpan = document.querySelector(".total");
+  totalPriceSpan.innerText = `Total: $${total}`;
+}
+calculateAndDisplayTotalPrice();
+
+//display shipping message
+//check nese totali eshte mbi 100$
+// select shipping message element
+//diplay message
+// call the function inside the calculateAndDisplayTotalPrice

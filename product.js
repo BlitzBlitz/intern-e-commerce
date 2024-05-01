@@ -102,8 +102,11 @@ function addToCart() {
   let isPresent = false;
   for (let index = 0; index < cart.length; index++) {
     const cartProduct = cart[index];
+
     if (cartProduct.id == product.id) {
-      cartProduct.amount += 1;
+      if (cartProduct.stockAmount > cartProduct.amount) {
+        cartProduct.amount += 1;
+      }
       isPresent = true;
     }
   }
