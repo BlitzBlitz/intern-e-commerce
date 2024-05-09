@@ -131,6 +131,7 @@ function calculateAndDisplayTotalPrice() {
   total = calculateCartTotal(cart);
   const totalPriceSpan = document.querySelector(".total");
   totalPriceSpan.innerText = `Total: $${total}`;
+  displayShippingMessage(total);
 }
 calculateAndDisplayTotalPrice();
 
@@ -139,3 +140,13 @@ calculateAndDisplayTotalPrice();
 // select shipping message element
 //diplay message
 // call the function inside the calculateAndDisplayTotalPrice
+function displayShippingMessage(calculateAndDisplayTotalPrice) {
+  const shippingMessageElement = document.querySelector(".free-shipping");
+  if (total > 100) {
+    shippingMessageElement.innerText = "Shipping is free!";
+  } else {
+    shippingMessageElement.innerText = "Shipping costs 10$.";
+  }
+}
+
+calculateAndDisplayTotalPrice();
