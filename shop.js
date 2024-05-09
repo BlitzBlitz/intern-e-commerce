@@ -1,3 +1,30 @@
+//Set users
+let userList = localStorage.getItem("users");
+if (!userList) {
+  localStorage.setItem("users", "[]");
+}
+
+//auth link
+let authLinkElement = document.querySelector("#auth-link");
+authLinkElement.addEventListener("click", handleLog);
+function handleLog(event) {
+  let linkText = authLinkElement.innerText;
+  if (linkText == "Log Out") {
+    localStorage.removeItem("authUser");
+    authLinkElement.innerText = "Log In";
+    //ridirect home
+  }
+  if (linkText == "Log In") {
+    window.location = "login.html";
+  }
+}
+let authUser = JSON.parse(localStorage.getItem("authUser"));
+if (authUser) {
+  authLinkElement.innerText = "Log Out";
+} else {
+  authLinkElement.innerText = "Log In";
+}
+
 //Cart
 let cart = JSON.parse(localStorage.getItem("cart"));
 if (cart == undefined) {

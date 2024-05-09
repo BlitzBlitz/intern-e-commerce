@@ -107,7 +107,11 @@ if (productStateArray == undefined) {
 
   localStorage.setItem("productsList", JSON.stringify(productStateArray)); //convert Array to string
 }
-
+//Set users
+let userList = localStorage.getItem("users");
+if (!userList) {
+  localStorage.setItem("users", "[]");
+}
 //Cart
 let cart = JSON.parse(localStorage.getItem("cart"));
 if (cart == undefined) {

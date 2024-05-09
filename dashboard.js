@@ -1,3 +1,9 @@
+//Check Auth
+let authUser = JSON.parse(localStorage.getItem("authUser"));
+if (!authUser || authUser.email != "admin@admin.com") {
+  window.location = "shop.html";
+}
+
 //Read Products
 const productsURL = "http://localhost:3000/products";
 const productAreaElement = document.querySelector(".middle-part");
