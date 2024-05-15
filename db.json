@@ -1,0 +1,177 @@
+{
+  "products": [
+    {
+      "id": "P1",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Carry-On-Edited",
+      "price": "123",
+      "color": [
+        2
+      ],
+      "stockAmount": 5,
+      "category": 1,
+      "material": 3,
+      "title": "Carr"
+    },
+    {
+      "id": "P2",
+      "img": [
+        "img/p2/1.webp",
+        "img/p2/2.webp",
+        "img/p2/3.webp"
+      ],
+      "name": "Carry-On Flex",
+      "price": "32",
+      "color": [
+        1,
+        2,
+        3
+      ],
+      "stockAmount": 20,
+      "category": 1,
+      "material": 3,
+      "title": "Carry-On 2"
+    },
+    {
+      "id": "P3",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Carry-On: Aluminum Edition",
+      "price": "625",
+      "color": [
+        1,
+        3
+      ],
+      "stockAmount": 25,
+      "category": 1,
+      "material": 1
+    },
+    {
+      "id": "P4",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Bigger Carry-On Flex1",
+      "price": "366",
+      "color": [
+        1,
+        2
+      ],
+      "stockAmount": 1,
+      "category": 3,
+      "material": 1
+    },
+    {
+      "id": "P5",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Bigger Carry-On: Aluminum Edition",
+      "price": "645",
+      "color": [
+        2,
+        3
+      ],
+      "stockAmount": 20,
+      "category": 2,
+      "material": 3
+    },
+    {
+      "id": "P6",
+      "img": [
+        "img/p1/1.webp",
+        "img/p1/b1.jpg",
+        "img/p1/b2.jpg",
+        "img/p1/h1.png",
+        "img/p1/h2.png",
+        "img/p1/h3.png"
+      ],
+      "name": "Medium",
+      "price": "345",
+      "color": [
+        1,
+        3
+      ],
+      "stockAmount": 5,
+      "category": 2,
+      "material": 2
+    }
+  ],
+  "users": [
+    {
+      "username": "JohnDoe",
+      "password": "john123",
+      "id": "8986"
+    },
+    {
+      "username": "JaneSmith",
+      "password": "smith987",
+      "id": "4b96"
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "name": "bag"
+    },
+    {
+      "id": "2",
+      "name": "luggage"
+    },
+    {
+      "id": "3",
+      "name": "small bag"
+    }
+  ],
+  "material": [
+    {
+      "id": "1",
+      "name": "plastic"
+    },
+    {
+      "id": "2",
+      "name": "metal"
+    },
+    {
+      "id": "3",
+      "name": "aluminuim"
+    }
+  ],
+  "color": [
+    {
+      "id": "1",
+      "name": "green"
+    },
+    {
+      "id": "2",
+      "name": "black"
+    },
+    {
+      "id": "3",
+      "name": "white"
+    }
+  ]
+}

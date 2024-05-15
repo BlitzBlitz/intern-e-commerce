@@ -27,7 +27,7 @@
         <a class="shop-links-special" href="http://"> SALE</a>
       </div>
       <div class="part-two">
-        <a class="shop-links" href="http://">LOG IN</a>
+        <button class="shop-links" id="auth-link">LOG IN</button>
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
@@ -43,32 +43,19 @@
     <div class="shop-area">
       <div class="filters">
         <div class="filter">
-          <span>Category <button class="dropdown">v</button></span>
-
-          <div class="options hidden">
-            <span id="Category1">Carry-On</span>
-            <span id="Category2">Carry-one</span>
-            <span id="Category3">Carry-one-Flex</span>
-            <span id="Category4">Category4</span>
-          </div>
+          <select name="category-filter" id="category-filter">
+            <option value="-1" selected="selected">Category</option>
+          </select>
         </div>
         <div class="filter">
-          <span>Material <button class="dropdown">v</button></span>
-          <div class="options hidden">
-            <span>Material1</span>
-            <span>Material2</span>
-            <span>Material3</span>
-            <span>Material4</span>
-          </div>
+          <select name="material-filter" id="material-filter">
+            <option value="-1" selected="selected">Material</option>
+          </select>
         </div>
         <div class="filter">
-          <span>Color <button class="dropdown">v</button></span>
-          <div class="options hidden">
-            <span>Color1</span>
-            <span>Color2</span>
-            <span>Color3</span>
-            <span>Color4</span>
-          </div>
+          <select name="color-filter" id="color-filter">
+            <option value="-1" selected="selected">Color</option>
+          </select>
         </div>
       </div>
 

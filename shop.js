@@ -1,5 +1,51 @@
+//Set users
+let userList = localStorage.getItem("users");
+if (!userList) {
+  localStorage.setItem("users", "[]");
+}
+
+//auth link
+let authLinkElement = document.querySelector("#auth-link");
+authLinkElement.addEventListener("click", handleLog);
+function handleLog(event) {
+  let linkText = authLinkElement.innerText;
+  if (linkText == "Log Out") {
+    localStorage.removeItem("authUser");
+    authLinkElement.innerText = "Log In";
+    //ridirect home
+  }
+  if (linkText == "Log In") {
+    window.location = "login.html";
+  }
+}
+let authUser = JSON.parse(localStorage.getItem("authUser"));
+if (authUser) {
+  authLinkElement.innerText = "Log Out";
+} else {
+  authLinkElement.innerText = "Log In";
+}
+
+//Cart
+let cart = JSON.parse(localStorage.getItem("cart"));
+if (cart == undefined) {
+  localStorage.setItem("cart", JSON.stringify([]));
+}
+
 let shopArea = document.querySelector(".products-area");
+const productsURL = "http://localhost:3000/products";
+const categoryURL = "http://localhost:3000/category";
+const materialURL = "http://localhost:3000/material";
+const colorURL = "http://localhost:3000/color";
+
+function makeUpperCase(string) {
+  let lettersArray = string.split("");
+  lettersArray[0] = lettersArray[0].toUpperCase();
+  string = lettersArray.join("");
+  return string;
+}
+
 function showProducts(productsList) {
+  console.log(productsList);
   shopArea.innerHTML = ""; //fshine produketet qe jane shfaqur ne ekran
   for (let index = 0; index < productsList.length; index++) {
     const product = productsList[index];
@@ -7,115 +53,23 @@ function showProducts(productsList) {
   }
 }
 
-let productStateArray = JSON.parse(localStorage.getItem("productsList")); //string -> Array
-if (productStateArray == undefined) {
-  productStateArray = [
-    {
-      id: "P1",
-      img: [
-        "img/p1/1.webp",
-        "img/p1/b1.jpg",
-        "img/p1/b2.jpg",
-        "img/p1/h1.png",
-        "img/p1/h2.png",
-        "img/p1/h3.png",
-      ],
-      name: "Carry-On",
-      price: "275",
-      colors: ["green", "gray", "blue", "black"],
-      stockAmount: 5,
-      category: "carry-on",
-      material: "plastic",
-    },
-    {
-      id: "P2",
-      img: [
-        "img/p2/1.webp",
-        "img/p2/2.webp",
-        "img/p2/3.webp",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Carry-On Flex",
-      price: "325",
-      colors: ["black", "gold", "pink"],
-      stockAmount: 20,
-      category: "carry-on",
-      material: "plastic",
-    },
-    {
-      id: "P3",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/2.webp",
-        "img/p2/7.webp",
-        "img/p2/8.webp",
-        "img/p2/9.webp",
-        "img/p2/h3.png",
-      ],
-      name: "Carry-On: Aluminum Edition",
-      price: "625",
-      colors: ["red", "gold", "pink"],
-      stockAmount: 25,
-      category: "carry-on",
-      material: "aluminum",
-    },
-    {
-      id: "P4",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/1.webp",
-        "img/p2/22.webp",
-        "img/p2/23.webp",
-        "img/p2/24.wbp",
-        "img/p2/h3.png",
-      ],
-      name: "Bigger Carry-On Flex",
-      price: "345",
-      colors: ["olive", "black", "gold", "pink"],
-      stockAmount: 1,
-      category: "big-carry-on",
-      material: "plastic",
-    },
-    {
-      id: "P5",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Bigger Carry-On: Aluminum Edition",
-      price: "645",
-      colors: ["red", "olive", "gold", "pink"],
-      stockAmount: 20,
-      category: "big-carry-on",
-      material: "aluminum",
-    },
-    {
-      id: "P6",
-      img: [
-        "img/p3/1.webp",
-        "img/p2/b1.jpg",
-        "img/p2/b2.jpg",
-        "img/p2/h1.png",
-        "img/p2/h2.png",
-        "img/p2/h3.png",
-      ],
-      name: "Medium",
-      price: "345",
-      colors: ["red", "black", "gold", "pink"],
-      stockAmount: 5,
-      category: "medium",
-      material: "plastic",
-    },
-  ];
-  localStorage.setItem("productsList", JSON.stringify(productStateArray)); //convert Array to string
+let productStateArray = [];
+function readProductsFromDB(filters) {
+  fetch(productsURL + filters)
+    .then((res) => res.json())
+    .then((products) => {
+      productStateArray = products;
+      showProducts(productStateArray);
+    })
+    .catch((error) => showError(error));
 }
-showProducts(productStateArray);
+readProductsFromDB("");
+function showError(error) {
+  console.log(error);
+}
+function showMessage(message) {
+  console.log(message);
+}
 function displayProduct(product) {
   let productLink = document.createElement("a");
   productLink.href = ` product.html?productId=${product.id} `; //query param
@@ -124,46 +78,18 @@ function displayProduct(product) {
           <img class="product-img" src=${product.img[0]} alt="" />
           <h1 class="name">${product.name}</h1>
           <h2 class="price">FROM ${product.price}$</h2>
-          <p class="color">in ${product.colors.length} colors</p>
+          <p class="color">in ${product.color.length} colors</p>
     `;
   shopArea.append(productLink);
 }
-// let firstDivElement = document.querySelector(".first-product")
-// let anotherElement = []
-// for (let index = 0; index < 3; index++) {
-//   const element = productStateArray[index];
 
-//     anotherElement.push(element)
-//     console.log(anotherElement);
-
-// }
-
-let dropdownButtonsList = document.querySelectorAll(".dropdown");
-let dropdownsContainerList = document.querySelectorAll(".options");
-
-for (let index = 0; index < dropdownButtonsList.length; index++) {
-  const dropdownElement = dropdownButtonsList[index];
-  dropdownElement.addEventListener("click", toggleDropdown);
-}
-for (let index = 0; index < dropdownsContainerList.length; index++) {
-  const dropdownContainer = dropdownsContainerList[index];
-  dropdownContainer.addEventListener("click", showFilteredResult);
-}
-if (dropdownButtonsList) {
-}
-
-function showFilteredResult(event) {
-  let optionElement = event.target;
-  let id = optionElement.id;
-  let categoryClicked = id.includes("category");
-  if (categoryClicked) {
-    //filter by category
-    //filter("category", id);
-  }
-  let materialClicked = id.includes("material");
-  if (materialClicked) {
-    //filter by material
-    //filter("material", id);
+function showFilteredResultForCategory(event) {
+  let selectInput = event.target;
+  let categoryId = +selectInput.value;
+  if (categoryId == -1) {
+    readProductsFromDB("");
+  } else {
+    readProductsFromDB(`?category=${categoryId}`);
   }
 }
 
@@ -202,3 +128,93 @@ function search(keyword) {
   }
   return resultArray;
 }
+
+//Add category options
+function addCategoriesOptions(categories) {
+  let categorySelectInput = document.querySelector("#category-filter");
+  categorySelectInput.addEventListener("change", showFilteredResultForCategory);
+  for (let index = 0; index < categories.length; index++) {
+    const category = categories[index];
+    let optionElement = document.createElement("option");
+    optionElement.innerText = makeUpperCase(category.name);
+    optionElement.value = category.id;
+    categorySelectInput.appendChild(optionElement);
+  }
+}
+
+fetch(categoryURL)
+  .then((res) => res.json())
+  .then((categories) => addCategoriesOptions(categories))
+  .catch((error) => console.log(error));
+
+function showFilteredResultForMaterial(event) {
+  let selectInput = event.target;
+  let materialId = +selectInput.value;
+  console.log(materialId);
+  if (materialId == -1) {
+    readProductsFromDB("");
+  } else {
+    readProductsFromDB(`?material=${materialId}`);
+  }
+}
+
+function addMaterialsOptions(materialsList) {
+  let materialSelectInput = document.querySelector("#material-filter");
+  materialSelectInput.addEventListener("change", showFilteredResultForMaterial);
+  for (let index = 0; index < materialsList.length; index++) {
+    const material = materialsList[index];
+    let optionElement = document.createElement("option");
+    optionElement.innerText = makeUpperCase(material.name);
+    optionElement.value = material.id;
+    materialSelectInput.appendChild(optionElement);
+  }
+}
+
+fetch(materialURL)
+  .then((res) => res.json())
+  .then((material) => addMaterialsOptions(material))
+  .catch((error) => console.log(error));
+
+function showFilteredResultForColor(event) {
+  let selectInput = event.target;
+  let colorId = +selectInput.value;
+  if (colorId == -1) {
+    readProductsFromDB("");
+  } else {
+    fetch(productsURL)
+      .then((res) => res.json())
+      .then((products) => {
+        const filteredProductsByColor = [];
+        for (let index = 0; index < products.length; index++) {
+          const product = products[index];
+          for (let j = 0; j < product.color.length; j++) {
+            const color = product.color[j];
+            if (color == colorId) {
+              filteredProductsByColor.push(product);
+              break;
+            }
+          }
+        }
+        console.log(filteredProductsByColor);
+        showProducts(filteredProductsByColor);
+      })
+      .catch((error) => console.log(error));
+  }
+}
+
+function addColorsOptions(colorList) {
+  let colorSelectInput = document.querySelector("#color-filter");
+  colorSelectInput.addEventListener("change", showFilteredResultForColor);
+  for (let index = 0; index < colorList.length; index++) {
+    const color = colorList[index];
+    let optionElement = document.createElement("option");
+    optionElement.innerText = makeUpperCase(color.name);
+    optionElement.value = color.id;
+    colorSelectInput.appendChild(optionElement);
+  }
+}
+
+fetch(colorURL)
+  .then((res) => res.json())
+  .then((colors) => addColorsOptions(colors))
+  .catch((error) => console.log(error));
